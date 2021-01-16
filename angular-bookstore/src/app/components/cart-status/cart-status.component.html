@@ -1,0 +1,7 @@
+
+
+<a routerLink="/cart-details" class="btn btn-warning custom-btn font-weight-bold">
+    {{totalPrice | currency: 'USD'}}
+    &nbsp; <span class="badge badge-light mt-1">{{totalQuantity}}</span>
+    &nbsp; <i class="text-white"><fa-icon [icon]="cartDown"></fa-icon></i>
+</a>
