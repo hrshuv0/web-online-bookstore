@@ -1,9 +1,8 @@
-
 <div class="row">
 
 
     <div class="col-md-3">
-        
+
         <app-book-category></app-book-category>
     </div>
 
@@ -19,7 +18,7 @@
                                 <td width="20%">Book Image</td>
                                 <td width="50%">Book Details</td>
                                 <td width="30%"></td>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -30,22 +29,46 @@
                                 <td>
                                     <p>{{cartItem.name}}</p>
                                     <p>{{cartItem.unitPrice | currency: 'USD'}}</p>
-    
+
                                 </td>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>Quantity: {{cartItem.quantity}}</p>
-                                            
+                                            <p>Quantity: 
+                                                <span (click)="remove(cartItem)" class="float-right text-danger pointer">
+                                                    <i><fa-icon [icon]="faTrash"></fa-icon></i>
+                                                </span>
+                                            </p>
+
                                         </div>
+
+                                        <div class="col-md-4">
+                                            <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm float-left">
+                                                <i class="text-white">
+                                                    <fa-icon [icon]="btnPlus"></fa-icon>
+                                                </i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4  text-center">
+                                            {{cartItem.quantity}}
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm float-right">
+                                                <i class="text-white">
+                                                    <fa-icon [icon]="btnMinus"></fa-icon>
+                                                </i>
+                                            </button>
+                                        </div>
+
+
                                         <div class="col-md-12">
                                             <p>Subtotal: {{cartItem.quantity * cartItem.unitPrice}}</p>
                                         </div>
                                     </div>
-    
+
                                 </td>
                             </tr>
-    
+
                             <tr>
                                 <td colspan="2"></td>
                                 <td font-weight-bold>
@@ -54,8 +77,8 @@
                                     <p>Total price:{{totalPrice | currency: 'USD'}} </p>
                                 </td>
                             </tr>
-    
-    
+
+
                         </tbody>
                     </table>
 
@@ -67,7 +90,7 @@
 
 
                 </div>
-                
+
             </div>
         </div>
 
