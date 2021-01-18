@@ -30,3 +30,6 @@ a{
     cursor: pointer;
 }
 
+a, .pointer{
+    cursor: pointer;
+}

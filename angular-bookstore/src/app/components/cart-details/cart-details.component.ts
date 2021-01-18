@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-cart-details',
@@ -9,6 +10,9 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartDetailsComponent implements OnInit {
 
+  btnPlus = faPlus;
+  btnMinus = faMinus;
+  faTrash = faTrash;
 
   cartItems: CartItem[] = [];
   totalPrice: number = 0;
@@ -33,6 +37,18 @@ export class CartDetailsComponent implements OnInit {
 
     this._cartService.calculateTotalPrice();
 
+  }
+
+  incrementQuantity(cartItem: CartItem){
+    this._cartService.addToCart(cartItem);
+  }
+
+  decrementQuantity(cartItem: CartItem){
+    this._cartService.decrementQuantity(cartItem);
+
+  }
+  remove(cartItem: CartItem){
+    this._cartService.remove(cartItem);
   }
 
 }
